@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gift 5 - Heart Wish</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: radial-gradient(#ffe6f0, #ffcce0);
+      overflow: hidden;
+    }
+
+    .heart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 80px;
+    }
+
+    .heart {
+      width: 100px;
+      height: 90px;
+      position: relative;
+      animation: beat 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 90px;
+      background: #ff3366;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .wish {
+      font-size: 1.6rem;
+      color: #d63384;
+      margin-top: 40px;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: gold;
+      border-radius: 50%;
+      animation: sparkle 6s infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-800px); opacity: 0; }
+    }
+
+    .back-button {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+
+    .back-button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart-container">
+    <div class="heart"></div>
+    <div class="wish">
+      Happy Birthday Kajal Didi!<br/>
+      You are truly one in a million.<br/>
+      May your life always beat with love, joy, and success! 💖
+    </div>
+    <a href="surprise.html" class="back-button">⬅️ Back to Gifts</a>
+  </div>
+
+  <!-- Sparkles -->
+  <script>
+    for (let i = 0; i < 60; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDuration = (Math.random() * 4 + 3) + 's';
+      document.body.appendChild(sparkle);
+    }
+  </script>
+  <!-- Birthday Song -->
+  <audio autoplay loop>
+    <source src="happy_birthday.mp3" type="audio/mpeg">
+  </audio>
+</body>
+</html>

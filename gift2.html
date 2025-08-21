@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gift 2 🎆 Surprise!</title>
+  <style>
+    :root{
+      --bg1:#04010a;
+      --bg2:#10021f;
+      --accent:#ff4db8;
+    }
+
+    /* Layout */
+    html,body{
+      margin:0;
+      height:100%;
+      overflow-y: auto; /* scroll enabled */
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:#fff;
+      background:
+        radial-gradient(1500px 600px at 50% -20%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(800px 500px at 120% 10%, rgba(255,0,128,.12), transparent 60%),
+        radial-gradient(1000px 700px at -20% 110%, rgba(64,0,255,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+    }
+
+    .wrap{
+      position:relative;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:18px;
+      text-align:center;
+      padding:24px;
+    }
+
+    h1{
+      margin:0 0 6px;
+      font-weight:700;
+      letter-spacing:.5px;
+      text-shadow:0 0 18px rgba(255,128,200,.45);
+    }
+
+    /* Image card */
+    .frame{
+      position:relative;
+      max-width:min(92vw, 900px);
+      max-height:min(68vh, 70rem);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:
+        0 0 0 2px rgba(255,255,255,.06) inset,
+        0 12px 40px rgba(0,0,0,.55),
+        0 0 90px rgba(255,77,184,.25);
+      animation: breathe 6s ease-in-out infinite;
+      background:#111;
+    }
+    .frame::before{
+      content:"";
+      position:absolute; inset:-2px;
+      border-radius:30px;
+      background: conic-gradient(from 0deg, #ff7ad9, #7c3aed, #06b6d4, #ff7ad9);
+      filter: blur(22px);
+      opacity:.35;
+      z-index:-1;
+      animation: spin 16s linear infinite;
+    }
+    .gift-img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    @keyframes spin{ to{ transform: rotate(360deg);} }
+    @keyframes breathe{
+      0%,100%{ transform: translateY(0) scale(1); }
+      50%{ transform: translateY(-6px) scale(1.01); }
+    }
+
+    /* Back button */
+    .btn{
+      appearance:none;
+      border:0;
+      padding:12px 22px;
+      border-radius:999px;
+      background: linear-gradient(135deg, #ff4db8, #ff8fd6);
+      color:#fff; font-weight:700; letter-spacing:.3px;
+      box-shadow:0 8px 24px rgba(255,77,184,.35);
+      cursor:pointer;
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .btn:hover{ transform: translateY(-2px) scale(1.03); box-shadow:0 10px 28px rgba(255,77,184,.45); }
+    .btn:active{ transform: translateY(0) scale(.99); filter: brightness(.95); }
+
+    /* Floating sparkles (ambient stars) */
+    .sparkle{
+      position:fixed;
+      width:4px; height:4px; border-radius:50%;
+      background: white; opacity:.9;
+      box-shadow:0 0 10px white, 0 0 24px #ffd6f3;
+      animation: floatUp var(--dur) linear infinite;
+      left: var(--x); bottom:-20px;
+      filter: drop-shadow(0 0 6px #fff);
+    }
+    @keyframes floatUp{
+      from{ transform: translateY(0) scale(.6); opacity:.0;}
+      10%{opacity:1;}
+      to{ transform: translateY(-110vh) scale(1.1); opacity:0; }
+    }
+
+    /* Fireworks (crackers) */
+    .firework{
+      --x:50vw; --y:50vh; --hue:320; --size:220; --spread:1;
+      position:fixed; left:var(--x); top:var(--y); pointer-events:none;
+    }
+    .firework .particle{
+      position:absolute; left:0; top:0; width:6px; height:6px; border-radius:50%;
+      background: hsl(var(--hue), 100%, 60%);
+      box-shadow: 0 0 16px hsl(var(--hue), 100%, 60%);
+      transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0);
+      animation: boom calc(600ms + var(--rand)*400ms) cubic-bezier(.2,.6,.3,1) forwards;
+      opacity:.98;
+    }
+    @keyframes boom{
+      0%{ transform: translate(-50%,-50%) rotate(var(--angle)) translateY(0) scale(.9); opacity:1;}
+      80%{ opacity:1;}
+      100%{ transform: translate(-50%,-50%) rotate(var(--angle)) translateY(var(--distance)) scale(.9); opacity:0;}
+    }
+    /* trails */
+    .firework .particle::after{
+      content:"";
+      position:absolute; left:50%; top:50%;
+      width:2px; height:18px; transform: translate(-50%,-100%);
+      background: linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,0));
+      filter: blur(0.5px);
+      opacity:.7;
+    }
+
+    /* Tiny label under image (optional) */
+    .caption{
+      font-size:.95rem; opacity:.85;
+    }
+
+    /* Make image nicely responsive */
+    @media (max-width: 600px){
+      .frame{ max-height: 56vh; }
+      h1{ font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>💝 A Special Gift For You, Kajal Didi 💝</h1>
+    <h1>💝 प्रिय उपहार 💝</h1>
+
+
+    <div class="frame" aria-label="Surprise Gift">
+      <img class="gift-img" src="uphar.jpg" alt="My surprise gift for you">
+    </div>
+
+    <div class="caption">With love — from Betu ✨</div>
+
+    <button class="btn" onclick="location.href='surprise.html'">← Back to Surprises</button>
+  </div>
+
+  <audio autoplay loop>
+    <source src="happy_birthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    /* Floating sparkles */
+    (function makeSparkles(){
+      const COUNT = 50;
+      for(let i=0;i<COUNT;i++){
+        const s=document.createElement('div');
+        s.className='sparkle';
+        s.style.setProperty('--x', Math.random()*100 + 'vw');
+        s.style.setProperty('--dur', (3 + Math.random()*4) + 's');
+        document.body.appendChild(s);
+        // Stagger start
+        s.style.animationDelay = (-Math.random()*5)+'s';
+      }
+    })();
+
+    /* Fireworks (crackers) */
+    function launchFirework(){
+      const fw = document.createElement('div');
+      fw.className='firework';
+
+      // random position (not too close to edges)
+      const x = 10 + Math.random()*80;   // vw
+      const y = 18 + Math.random()*50;   // vh
+      fw.style.setProperty('--x', x + 'vw');
+      fw.style.setProperty('--y', y + 'vh');
+
+      // random hue + size
+      const hue = Math.floor(Math.random()*360);
+      fw.style.setProperty('--hue', hue);
+      const size = 140 + Math.random()*180; // distance
+      fw.style.setProperty('--size', size);
+
+      // create particles
+      const particles = 26;
+      for(let i=0;i<particles;i++){
+        const p = document.createElement('div');
+        p.className='particle';
+        const angle = (360/particles)*i + (Math.random()*6-3);
+        p.style.setProperty('--angle', angle + 'deg');
+        p.style.setProperty('--distance', (size * (.75 + Math.random()*0.35)) + 'px');
+        p.style.setProperty('--rand', Math.random());
+        fw.appendChild(p);
+      }
+
+      document.body.appendChild(fw);
+      // clean after animation
+      setTimeout(()=> fw.remove(), 1600);
+    }
+
+    // Launch fireworks repeatedly
+    setInterval(launchFirework, 700);
+    // burst a few immediately
+    for(let i=0;i<3;i++) setTimeout(launchFirework, i*250);
+  </script>
+</body>
+</html>

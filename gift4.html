@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gift 4 - Secret Message</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .gift-box {
+      width: 200px;
+      height: 200px;
+      margin: 40px auto;
+      background: #ff69b4;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ff1493;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gift-box:hover {
+      transform: scale(1.05);
+    }
+
+    .gift-icon {
+      font-size: 3rem;
+      color: white;
+    }
+
+    .secret-message {
+      display: none;
+      font-size: 1.4rem;
+      color: #4CAF50;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .back-button {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎁 Gift 4 - Click the Surprise Box</h1>
+
+    <div class="gift-box" onclick="revealMessage()">
+      <div class="gift-icon">🎁</div>
+    </div>
+
+    <div id="secret" class="secret-message">
+      Dear Kajal Didi,<br/>
+      You are a blessing in every way.<br/>
+      May your year be filled with love, laughter, success, and sweet surprises!<br/><br/>
+      Happy Birthday! ❤️
+    </div>
+
+    <a href="surprise.html" class="back-button">⬅️ Back to Gifts</a>
+  </div>
+
+  <script>
+    function revealMessage() {
+      document.getElementById("secret").style.display = "block";
+    }
+  </script>
+  <!-- Birthday Song -->
+  <audio autoplay loop>
+    <source src="happy_birthday.mp3" type="audio/mpeg">
+  </audio>
+</body>
+</html>

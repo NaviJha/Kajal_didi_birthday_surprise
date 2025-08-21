@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gift 9 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #ff1493;
+      text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff1493;
+    }
+
+    .typewriter {
+      color: #ffccff;
+      font-size: 1.3rem;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+      border-right: 2px solid #ff1493;
+      width: 90%;
+      max-width: 700px;
+      overflow: hidden;
+      min-height: 300px;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff3399;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 12px 25px;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #28a745;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #1c7c34;
+      transform: scale(1.1);
+    }
+
+    /* Fireworks */
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: transparent;
+      border-radius: 50%;
+      animation: explode 1.5s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎁 Gift 9 - A Birthday Poem</h1>
+    <div class="typewriter" id="poem"></div>
+    <a href="surprise.html" class="back-button">⬅ Back to Gifts</a>
+  </div>
+
+  <script>
+    // Typewriter poem
+    const poemLines = [
+      "To the one who brings sunshine to our skies, ☀",
+      "With love that shines and never dies. 💖",
+      "Your smile brightens up the darkest day, 😊",
+      "And your kindness always leads the way. 🌸",
+      "",
+      "From childhood tales to grown-up dreams, ✨",
+      "You’ve stitched our world with loving seams. 🧵",
+      "A sister, a guide, a soul so true, 🌈",
+      "I’m lucky every day to have you. 💫",
+      "",
+      "Happy Birthday Kajal Didi — you’re a gem, 💎",
+      "A blessing beyond any precious diadem. 🎁",
+      "May your path be filled with light, 🌟",
+      "And your heart always feel this bright. ❤"
+    ];
+
+    const element = document.getElementById("poem");
+    let line = 0;
+    let char = 0;
+
+    function typeLine() {
+      if (line < poemLines.length) {
+        if (char < poemLines[line].length) {
+          element.textContent += poemLines[line].charAt(char);
+          char++;
+          setTimeout(typeLine, 40);
+        } else {
+          element.textContent += "\n";
+          line++;
+          char = 0;
+          setTimeout(typeLine, 300);
+        }
+      }
+    }
+    typeLine();
+
+    // Fireworks effect
+    function createFirework() {
+      const colors = ["#ff1493", "#ffcc00", "#00ffcc", "#ff3333", "#66ff66", "#3399ff"];
+      const firework = document.createElement("div");
+      firework.className = "firework";
+      firework.style.left = Math.random() * 100 + "vw";
+      firework.style.top = Math.random() * 100 + "vh";
+      firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+      document.body.appendChild(firework);
+
+      setTimeout(() => {
+        firework.remove();
+      }, 1500);
+    }
+
+    setInterval(createFirework, 500);
+  </script>
+
+  <!-- Birthday Song -->
+  <audio autoplay loop>
+    <source src="happy_birthday.mp3" type="audio/mpeg">
+  </audio>
+</body>
+</html>

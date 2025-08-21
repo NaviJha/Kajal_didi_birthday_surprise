@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift 8 🌌</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #0b0014, #000);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Stars Background */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Shooting Star */
+    .shooting-star {
+      position: absolute;
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, white, transparent);
+      transform: rotate(-45deg);
+      animation: shoot 5s linear infinite;
+    }
+    @keyframes shoot {
+      0% {
+        top: -50px;
+        left: -200px;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      50% {
+        top: 50%;
+        left: 100%;
+        opacity: 0;
+      }
+      100% {
+        top: 100%;
+        left: 150%;
+        opacity: 0;
+      }
+    }
+
+    /* Heading */
+    h1 {
+      position: relative;
+      font-size: 2.2rem;
+      color: #ffccff;
+      text-shadow: 0 0 20px #ff66ff, 0 0 40px #cc33ff;
+      animation: glow 3s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff66ff, 0 0 20px #cc33ff; }
+      to { text-shadow: 0 0 30px #ff99ff, 0 0 60px #ff33cc; }
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: #ffe6ff;
+      margin-top: 10px;
+      text-shadow: 0 0 15px #ff66ff, 0 0 25px #cc33ff;
+    }
+
+    /* Back Button */
+    .btn {
+      margin-top: 30px;
+      background: #ff3399;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff66cc;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background: #ff66cc;
+      box-shadow: 0 0 30px #ff3399;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars -->
+  <div class="star" style="top:20%; left:30%;"></div>
+  <div class="star" style="top:40%; left:60%;"></div>
+  <div class="star" style="top:70%; left:20%;"></div>
+  <div class="star" style="top:80%; left:80%;"></div>
+  <div class="star" style="top:10%; left:50%;"></div>
+
+  <!-- Shooting Star -->
+  <div class="shooting-star"></div>
+
+  <!-- Message -->
+  <div>
+    <h1>🌠 Make a Wish, Kajal Didi 🌠</h1>
+    <p>Just like the stars shine forever,<br>my wishes for you will always glow! ✨</p>
+    <a href="surprise.html"><button class="btn">← Back to Surprises</button></a>
+  </div>
+  <!-- Birthday Song -->
+  <audio autoplay loop>
+    <source src="happy_birthday.mp3" type="audio/mpeg">
+  </audio>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎁 Your Surprise Gifts!</title>
+
+  <style>
+    /* Background */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: black;
+      text-align: center;
+      overflow-y: auto; /* scroll enabled */
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 2.5rem;
+      color: #ffccff;
+      text-shadow: 0 0 10px #ff4da6, 0 0 20px #ff4da6;
+    }
+
+    .message {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    /* Floating stars */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .stars span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: twinkle 3s infinite linear;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1.5); }
+      100% { opacity: 0; transform: scale(0); }
+    }
+
+    /* Floating ribbons */
+    .ribbon {
+      position: absolute;
+      width: 4px;
+      height: 100px;
+      background: linear-gradient(to bottom, #ff4da6, #ffccff);
+      opacity: 0.7;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-150px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Gift buttons */
+    .gift-button {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      color: white;
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      border: none;
+      border-radius: 15px;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      width: 200px;
+    }
+
+    .gift-button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars">
+    <!-- Generate stars -->
+    <script>
+      for (let i = 0; i < 80; i++) {
+        let star = document.createElement("span");
+        star.style.left = Math.random() * window.innerWidth + "px";
+        star.style.top = Math.random() * window.innerHeight + "px";
+        star.style.animationDuration = 2 + Math.random() * 3 + "s";
+        document.querySelector(".stars").appendChild(star);
+      }
+    </script>
+  </div>
+
+  <!-- Ribbons -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      let ribbon = document.createElement("div");
+      ribbon.className = "ribbon";
+      ribbon.style.left = Math.random() * window.innerWidth + "px";
+      ribbon.style.animationDuration = 3 + Math.random() * 4 + "s";
+      document.body.appendChild(ribbon);
+    }
+  </script>
+
+  <div class="container">
+    <h1>🎉 Surprise Time Kajal Didi! 🎉</h1>
+    <p class="message">You've waited long enough. Click to open your gifts one by one 💝</p>
+
+    <a class="gift-button" href="gift1.html">🎁 Open Gift 1</a>
+    <a class="gift-button" href="gift2.html">🎁 Open Gift 2</a>
+    <a class="gift-button" href="gift3.html">🎁 Open Gift 3</a>
+    <a class="gift-button" href="gift4.html">🎁 Open Gift 4</a>
+    <a class="gift-button" href="gift5.html">🎁 Open Gift 5</a>
+    <a class="gift-button" href="gift6.html">🎁 Open Gift 6</a>
+    <a class="gift-button" href="gift7.html">🎁 Open Gift 7</a>
+    <a class="gift-button" href="gift8.html">🎁 Open Gift 8</a>
+    <a class="gift-button" href="gift9.html">🎁 Open Gift 9</a>
+  </div>
+
+  <!-- Birthday Song -->
+  <audio autoplay loop>
+    <source src="happy.mp3" type="audio/mpeg">
+  </audio>
+</body>
+</html>
