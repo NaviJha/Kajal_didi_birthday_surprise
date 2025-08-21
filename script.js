@@ -1,5 +1,5 @@
 // Set the target date to midnight of 23 August
-const targetDate = new Date("August 22, 2025 00:05:00").getTime(); // 1 minute from now
+const targetDate = new Date("August 23, 2025 00:00:00").getTime(); // 1 minute from now
 
 
 const timer = setInterval(function() {
