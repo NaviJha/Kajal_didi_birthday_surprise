@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift 10 - Hearts Surprise</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #111 0%, #000 100%);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      overflow-y: auto; /* scroll enabled */
+      position: relative;
+    }
+
+    h1 {
+      margin: 20px;
+      font-size: 2rem;
+      color: #ff99cc;
+      text-shadow: 0 0 15px #ff4da6, 0 0 30px #ff66b2;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      margin: 60px 0; /* 👈 zyada spacing between rows */
+      gap: 25px;
+    }
+
+    .heart {
+      width: 70px;
+      height: 70px;
+      background: red;
+      position: relative;
+      transform: rotate(-45deg);
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255,0,0,0.8);
+      transition: transform 0.3s, opacity 0.5s;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: "";
+      width: 70px;
+      height: 70px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart:before {
+      top: -35px;
+      left: 0;
+    }
+
+    .heart:after {
+      top: 0;
+      left: 35px;
+    }
+
+    .letter {
+      font-size: 2rem;
+      color: yellow;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.5s;
+      text-shadow: 0 0 10px gold, 0 0 20px orange;
+    }
+
+    /* Fireworks */
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: gold;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(5); opacity: 0; }
+    }
+
+    /* Stars twinkling in background */
+    .bg-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: bg-twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes bg-twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+
+    /* Raining sparkles */
+    .rain {
+      position: absolute;
+      top: -10px;
+      font-size: 0.8rem; /* 👈 smaller particles */
+      color: gold;
+      text-shadow: 0 0 4px #fff, 0 0 10px yellow, 0 0 18px orange;
+      animation: fall linear forwards;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #ff4da6;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 0 15px #ff4da6;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #ff1a8c;
+      box-shadow: 0 0 25px #ff1a8c, 0 0 40px #ff66cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Click the Hearts 💖</h1>
+
+  <div class="row" id="row1"></div>
+  <div class="row" id="row2"></div>
+  <div class="row" id="row3"></div>
+
+  <a href="surprise.html" class="back-btn">⬅ Back</a>
+
+  <!-- Background song -->
+  <audio autoplay loop hidden>
+    <source src="happy_birthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const words = [
+      "HAPPY".split(""),
+      "BIRTHDAY".split(""),
+      ["🍫","🎂","🍫"]
+    ];
+
+    const rows = [document.getElementById("row1"), document.getElementById("row2"), document.getElementById("row3")];
+
+    // Create hearts for each row
+    words.forEach((letters, rowIndex) => {
+      letters.forEach(letter => {
+        let container = document.createElement("div");
+
+        let heart = document.createElement("div");
+        heart.className = "heart";
+
+        let span = document.createElement("span");
+        span.className = "letter";
+        span.innerText = letter;
+
+        container.appendChild(heart);
+        container.appendChild(span);
+
+        heart.addEventListener("click", function (event) {
+          heart.style.opacity = "0"; 
+          setTimeout(() => heart.remove(), 500);
+          span.style.opacity = "1";  
+          launchFirework(event.clientX, event.clientY);
+        });
+
+        rows[rowIndex].appendChild(container);
+      });
+    });
+
+    // Fireworks on click
+    function launchFirework(x, y) {
+      for (let i = 0; i < 20; i++) {
+        let fw = document.createElement("div");
+        fw.className = "firework";
+        fw.style.left = x + "px";
+        fw.style.top = y + "px";
+        document.body.appendChild(fw);
+        setTimeout(() => fw.remove(), 1000);
+      }
+    }
+
+    // ✨ Continuous raining sparkles
+    function rainEffect() {
+      const symbols = ["✨","🌟","💖","💫"]; // shiny symbols
+      setInterval(() => {
+        let rain = document.createElement("div");
+        rain.className = "rain";
+        rain.innerText = symbols[Math.floor(Math.random()*symbols.length)];
+        rain.style.left = Math.random() * window.innerWidth + "px";
+        rain.style.fontSize = (10 + Math.random()*15) + "px";
+        rain.style.animationDuration = (3 + Math.random()*3) + "s";
+        document.body.appendChild(rain);
+        setTimeout(() => rain.remove(), 6000);
+      }, 150); // faster rain
+    }
+
+    // 🌌 Background stars twinkling
+    function backgroundStars() {
+      for (let i = 0; i < 80; i++) {
+        let star = document.createElement("div");
+        star.className = "bg-star";
+        star.style.left = Math.random() * window.innerWidth + "px";
+        star.style.top = Math.random() * window.innerHeight + "px";
+        star.style.animationDuration = (2 + Math.random()*3) + "s";
+        document.body.appendChild(star);
+      }
+    }
+
+    // Start effects
+    rainEffect();
+    backgroundStars();
+  </script>
+</body>
+</html>
