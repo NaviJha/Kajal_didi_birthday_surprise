@@ -22,6 +22,9 @@ HELLO  KAJAL DIDI  -  I  HOPE  YOU  WILL  HAPPY  WITH  MY  EFFORTS
   - Gift 7 → Sparkling wishes text.  
   - Gift 8 → Rising confetti celebration.  
   - Gift 9 → “Final Surprise” heartfelt message with fireworks.  
+  - Gift 10 → Clickable glowing hearts that reveal **HAPPY BIRTHDAY** with fireworks & sparkles 🎆  
+
+  
 
 ---
 
